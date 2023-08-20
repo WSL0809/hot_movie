@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>热门电视剧链接</title>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd; 
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5; 
+}
+</style>
+</head>
+
+<body>
+
+<input type="text" id="search" placeholder="搜索剧名"> 
+
+<table>
+  <tr>
+    <th>剧名</th>
+    <th>链接</th>
+  </tr>
+  <tr>
+    <td>权力的游戏</td>
+    <td><a href="https://www.hbo.com/game-of-thrones">点击观看</a></td>
+  </tr>
+  <tr>
+    <td>绝命毒师</td> 
+    <td><a href="https://www.netflix.com/title/70143836">点击观看</a></td>
+  </tr>
+  <tr>
+    <td>古墓丽影</td>
+    <td><a href="https://v.qq.com/detail/p/izkif2hdozn.html">点击观看</a></td> 
+  </tr>
+</table>
+
+<script>
+
+let rows = document.querySelectorAll('tr');
+let search = document.getElementById('search');
+
+search.addEventListener('input', filter);
+
+function filter() {
+  let keyword = search.value.toLowerCase();
+   
+  rows.forEach(row => {
+    let title = row.firstChild.textContent.toLowerCase();
+    if (title.indexOf(keyword) > -1) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none"; 
+    }
+  });
+}
+
+rows.forEach(row => {
+  row.addEventListener('mouseover', event => {
+    event.target.style.backgroundColor = '#ddd';
+  });
+   
+  row.addEventListener('mouseout', event => {
+    event.target.style.backgroundColor = '';
+  });
+});
+
+</script>
+
+</body>
+</html>
